@@ -1,0 +1,171 @@
+{
+  "designs": [
+    {
+      "id": 1,
+      "image": "/images/designs/design-1.jpg",
+      "category": "Flyer",
+      "client": "Mama's Cafe",
+      "purpose": "Promotional flyer for Mother's Day event",
+      "year": "2025"
+    },
+    {
+      "id": 2,
+      "image": "/images/designs/design-2.jpg",
+      "category": "Logo",
+      "client": "TechStart GH",
+      "purpose": "Brand identity for a tech startup in Accra",
+      "year": "2025"
+    },
+    {
+      "id": 3,
+      "image": "/images/designs/design-3.jpg",
+      "category": "Social Media Post",
+      "client": "FitZone Gym",
+      "purpose": "Instagram post promoting gym membership",
+      "year": "2024"
+    },
+    {
+      "id": 4,
+      "image": "/images/designs/design-4.jpg",
+      "category": "Flyer",
+      "client": "AfroChic Boutique",
+      "purpose": "Seasonal sale flyer for fashion store",
+      "year": "2024"
+    },
+    {
+      "id": 5,
+      "image": "/images/designs/design-5.jpg",
+      "category": "Logo",
+      "client": "GreenLife Organics",
+      "purpose": "Eco-friendly brand identity for organic products",
+      "year": "2024"
+    },
+    {
+      "id": 6,
+      "image": "/images/designs/design-6.jpg",
+      "category": "Social Media Post",
+      "client": "Kofi's Kitchen",
+      "purpose": "Food promo for new menu launch on WhatsApp",
+      "year": "2025"
+    },
+    {
+      "id": 7,
+      "image": "/images/designs/design-7.jpg",
+      "category": "Flyer",
+      "client": "Golden Star Hotel",
+      "purpose": "Corporate event flyer for business conference",
+      "year": "2025"
+    },
+    {
+      "id": 8,
+      "image": "/images/designs/design-8.jpg",
+      "category": "Logo",
+      "client": "AfriHealth Pharmacy",
+      "purpose": "Modern logo for healthcare brand",
+      "year": "2024"
+    },
+    {
+      "id": 9,
+      "image": "/images/designs/design-9.jpg",
+      "category": "Social Media Post",
+      "client": "Sankofa Books",
+      "purpose": "Promotional post for book reading event",
+      "year": "2025"
+    },
+    {
+      "id": 10,
+      "image": "/images/designs/design-10.jpg",
+      "category": "Flyer",
+      "client": "Ghana Music Fest",
+      "purpose": "Concert poster for annual music festival",
+      "year": "2025"
+    }
+  ],
+  "stats": {
+    "revenueGrowth": "73%",
+    "customerRetention": "60%",
+    "revenueMultiplier": "2x"
+  },
+  "partners": [
+    "/images/partners/partner-1.png",
+    "/images/partners/partner-2.png",
+    "/images/partners/partner-3.png",
+    "/images/partners/partner-4.png",
+    "/images/partners/partner-5.png"
+  ],
+  "testimonials": [
+    {
+      "quote": "Before working with IAT, we barely had any online presence. After they designed our flyers and social media graphics, our customer inquiries increased by 45% in the first month.",
+      "author": "Mama's Cafe",
+      "location": "Accra"
+    },
+    {
+      "quote": "We struggled to look professional. IAT gave us a brand identity that made us stand out from our competitors. Now we charge more because we look like we're worth it.",
+      "author": "TechStart GH",
+      "location": "Kumasi"
+    }
+  ],
+  "pricing": {
+    "plans": [
+      {
+        "id": "single",
+        "title": "Single Project",
+        "price": "From GHS 250",
+        "period": null,
+        "features": [
+          "1 custom design",
+          "2 rounds of revisions",
+          "3–5 business days delivery"
+        ],
+        "buttonText": "Get Started",
+        "popular": false
+      },
+      {
+        "id": "monthly",
+        "title": "Monthly Retainer",
+        "price": "GHS 500",
+        "period": "/ month",
+        "features": [
+          "7 designs per month",
+          "Unlimited revisions",
+          "Priority support"
+        ],
+        "buttonText": "Get Started",
+        "popular": true
+      },
+      {
+        "id": "yearly",
+        "title": "Yearly Retainer",
+        "price": "GHS 3,000",
+        "period": "/ year",
+        "features": [
+          "7 designs per month",
+          "Source files included",
+          "Dedicated account manager"
+        ],
+        "buttonText": "Get Started",
+        "popular": false
+      },
+      {
+        "id": "payment-plan",
+        "title": "Payment Plan",
+        "price": "GHS 1,000",
+        "period": "/ month (3 months)",
+        "features": [
+          "Same benefits as Yearly",
+          "No interest",
+          "Start designing immediately"
+        ],
+        "buttonText": "Get Started",
+        "popular": false
+      }
+    ],
+    "includedItems": [
+      "Professional designs tailored to your brand",
+      "High-resolution files (PNG, JPG, PDF)",
+      "Revisions included",
+      "Delivery within 2–5 business days",
+      "Direct communication with your designer"
+    ]
+  }
+}
