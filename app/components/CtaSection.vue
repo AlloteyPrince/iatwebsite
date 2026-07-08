@@ -11,8 +11,12 @@
           Let's create something amazing together.
         </p>
         <div class="cta-actions">
-          <a href="#" class="cta-btn">Start Your Project</a>
-          <a href="#" class="cta-btn-secondary">Contact Us</a>
+          <button class="cta-btn" @click="openWhatsApp('Hi IAT, I want to start my design project today. Let\'s get started!')">
+            Start Your Project
+          </button>
+          <button class="cta-btn-secondary" @click="openWhatsApp('Hi IAT, I want to discuss a custom design project for my business.')">
+            Contact Us
+          </button>
         </div>
         <p class="cta-note">
           ⚡ No hidden fees. Free consultation included.
@@ -21,6 +25,12 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { useWhatsApp } from '~/composables/useWhatsApp'
+
+const { openWhatsApp } = useWhatsApp()
+</script>
 
 <style scoped>
 .cta-section {

@@ -20,12 +20,22 @@
         and increasing sales.
       </p>
       <div class="hero-actions">
-        <a href="#pricing" class="btn-primary">Start Your Project</a>
-        <a href="#" class="btn-secondary">Learn More</a>
+        <button class="btn-primary" @click="openWhatsApp('Hi IAT, I want to start a design project for my business. Can you help me?')">
+          Start Your Project
+        </button>
+        <button class="btn-secondary" @click="openWhatsApp('Hi IAT, I want to learn more about your design services.')">
+          Learn More
+        </button>
       </div>
     </div>
   </section>
 </template>
+
+<script setup>
+import { useWhatsApp } from '~/composables/useWhatsApp'
+
+const { openWhatsApp } = useWhatsApp()
+</script>
 
 <style scoped>
 .hero {

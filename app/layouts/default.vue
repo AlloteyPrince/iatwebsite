@@ -11,7 +11,9 @@
         <nav class="nav">
           <NuxtLink to="/portfolio" class="nav-link active">Portfolio</NuxtLink>
           <a href="#pricing" class="nav-link">Pricing</a>
-          <a href="#contact" class="nav-link nav-cta">Start Project</a>
+          <button class="nav-link nav-cta" @click="openWhatsApp('Hi IAT, I want to start a project with you.')">
+            Start Project
+          </button>
         </nav>
 
         <button class="mobile-toggle" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle menu">
@@ -25,7 +27,9 @@
         <div v-if="mobileMenuOpen" class="mobile-menu">
           <NuxtLink to="/portfolio" class="mobile-link" @click="mobileMenuOpen = false">Portfolio</NuxtLink>
           <a href="#pricing" class="mobile-link" @click="mobileMenuOpen = false">Pricing</a>
-          <a href="#contact" class="mobile-link mobile-cta" @click="mobileMenuOpen = false">Start Project</a>
+          <button class="mobile-link mobile-cta" @click="openWhatsApp('Hi IAT, I want to start a project with you.')">
+            Start Project
+          </button>
         </div>
       </Transition>
     </header>
@@ -47,25 +51,25 @@
 
           <div class="footer-links-group">
             <h4 class="footer-heading">Services</h4>
-            <a href="#">Logo Design</a>
-            <a href="#">Flyer Design</a>
-            <a href="#">Social Media Graphics</a>
-            <a href="#">Brand Identity</a>
+            <button class="footer-link-btn" @click="openWhatsApp('Hi IAT, I need a logo design for my business. Can you help?')">Logo Design</button>
+            <button class="footer-link-btn" @click="openWhatsApp('Hi IAT, I need a flyer design. Can you help?')">Flyer Design</button>
+            <button class="footer-link-btn" @click="openWhatsApp('Hi IAT, I need social media graphics. Can you help?')">Social Media Graphics</button>
+            <button class="footer-link-btn" @click="openWhatsApp('Hi IAT, I need a full brand identity. Can you help?')">Brand Identity</button>
           </div>
 
           <div class="footer-links-group">
             <h4 class="footer-heading">Company</h4>
-            <a href="/portfolio">Portfolio</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#">About</a>
-            <a href="#contact">Contact</a>
+            <NuxtLink to="/portfolio" class="footer-link">Portfolio</NuxtLink>
+            <a href="#pricing" class="footer-link">Pricing</a>
+            <button class="footer-link-btn" @click="openWhatsApp('Hi IAT, can you tell me more about your agency?')">About</button>
+            <button class="footer-link-btn" @click="openWhatsApp('Hi IAT, I want to contact you.')">Contact</button>
           </div>
 
           <div class="footer-links-group">
             <h4 class="footer-heading">Connect</h4>
-            <a href="#">WhatsApp</a>
-            <a href="#">Instagram</a>
-            <a href="#">Email</a>
+            <button class="footer-link-btn" @click="openWhatsApp('Hi IAT, I found you online and want to connect.')">WhatsApp</button>
+            <a href="#" class="footer-link">Instagram</a>
+            <button class="footer-link-btn" @click="openWhatsApp('Hi IAT, I have a question about your services.')">Email</button>
           </div>
         </div>
 
@@ -82,6 +86,10 @@
 </template>
 
 <script setup>
+import { useWhatsApp } from '@/composables/useWhatsApp'
+
+const { openWhatsApp } = useWhatsApp()
+
 const mobileMenuOpen = ref(false)
 const isScrolled = ref(false)
 
@@ -183,6 +191,10 @@ onBeforeUnmount(() => {
   font-weight: 500;
   transition: color 0.3s ease;
   position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .nav-link:hover {
@@ -273,6 +285,11 @@ onBeforeUnmount(() => {
   font-weight: 500;
   padding: 0.5rem 0;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
 }
 
 .mobile-link:hover {
@@ -373,14 +390,30 @@ onBeforeUnmount(() => {
   gap: 0.6rem;
 }
 
-.footer-links-group a {
+.footer-link {
   color: #94a3b8;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
-.footer-links-group a:hover {
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.footer-link-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  transition: color 0.3s ease;
+  font-family: inherit;
+}
+
+.footer-link-btn:hover {
   color: #ffffff;
 }
 

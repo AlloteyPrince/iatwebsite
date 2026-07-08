@@ -35,7 +35,9 @@
           </li>
         </ul>
 
-        <button class="plan-btn">{{ plan.buttonText }}</button>
+        <button class="plan-btn" @click="handlePlanClick(plan)">
+          {{ plan.buttonText }}
+        </button>
       </div>
     </div>
 
@@ -48,16 +50,38 @@
         </div>
       </div>
     </div>
+
+    <div class="pricing-cta">
+      <button class="btn-cta" @click="openWhatsApp('Hi IAT, I need help choosing the right plan for my business. Can you advise me?')">
+        <span>💬 Need help choosing a plan?</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
   </section>
 </template>
 
 <script setup>
+import { useWhatsApp } from '~/composables/useWhatsApp'
+
 defineProps({
   pricing: {
     type: Object,
     required: true
   }
 })
+
+const { openWhatsApp } = useWhatsApp()
+
+const handlePlanClick = (plan) => {
+  const messages = {
+    single: `Hi IAT, I'm interested in your Single Project plan. I need a custom design for my business. Can you tell me more?`,
+    monthly: `Hi IAT, I'm interested in your Monthly Retainer plan at GHS 500/month. I need regular designs for my business. Let's talk!`,
+    yearly: `Hi IAT, I'm interested in your Yearly Retainer plan at GHS 3,000/year. I want consistent branding for my business. Can we discuss?`
+  }
+  openWhatsApp(messages[plan.id] || `Hi IAT, I'm interested in your ${plan.title} plan. Can you tell me more?`)
+}
 </script>
 
 <style scoped>
@@ -106,21 +130,23 @@ defineProps({
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 @media (max-width: 1024px) {
   .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
   }
 }
 
 @media (max-width: 640px) {
   .pricing-grid {
     grid-template-columns: 1fr;
+    max-width: 400px;
   }
 }
 
@@ -234,7 +260,6 @@ defineProps({
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Included Section */
 .included-section {
   max-width: 900px;
   margin: 3.5rem auto 0;
@@ -265,6 +290,37 @@ defineProps({
 
 .included-icon {
   margin-right: 0.5rem;
+}
+
+.pricing-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #818cf8;
+  transform: translateY(-2px);
+}
+
+.btn-cta span {
+  color: #e2e8f0;
 }
 
 @media (max-width: 768px) {

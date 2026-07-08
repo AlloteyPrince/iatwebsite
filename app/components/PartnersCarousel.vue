@@ -20,11 +20,21 @@
         </div>
       </div>
     </div>
+
+    <div class="partners-cta">
+      <button class="btn-cta" @click="openWhatsApp('Hi IAT, I saw the brands you work with and I want to join them. Can you help my business?')">
+        <span>🚀 Join these brands</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
   </section>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { useWhatsApp } from '~/composables/useWhatsApp'
 
 const props = defineProps({
   partners: {
@@ -32,6 +42,8 @@ const props = defineProps({
     default: () => ['Brand 1', 'Brand 2', 'Brand 3', 'Brand 4', 'Brand 5']
   }
 })
+
+const { openWhatsApp } = useWhatsApp()
 
 const duplicatedPartners = computed(() => [...props.partners, ...props.partners])
 
@@ -46,17 +58,16 @@ const startScroll = () => {
   if (!trackEl) return
 
   let position = 0
-  const speed = 0.5 // pixels per frame
+  const speed = 0.5
 
   scrollInterval = setInterval(() => {
     if (isPaused) return
     position -= speed
     trackEl.style.transform = `translateX(${position}px)`
-    // Reset when halfway through (duplicated content)
     if (Math.abs(position) >= trackEl.scrollWidth / 2) {
       position = 0
     }
-  }, 16) // ~60fps
+  }, 16)
 }
 
 const stopScroll = () => {
@@ -156,5 +167,36 @@ onBeforeUnmount(() => {
   .carousel-track {
     gap: 1.5rem;
   }
+}
+
+.partners-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #818cf8;
+  transform: translateY(-2px);
+}
+
+.btn-cta span {
+  color: #e2e8f0;
 }
 </style>

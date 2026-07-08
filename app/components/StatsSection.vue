@@ -34,10 +34,21 @@
         <p class="testimonial-author">— {{ testimonial.author }}, {{ testimonial.location }}</p>
       </div>
     </div>
+
+    <div class="stats-cta">
+      <button class="btn-cta" @click="openWhatsApp('Hi IAT, I want to invest in professional design for my business. Can you help me?')">
+        <span>🚀 Ready to invest in your business?</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
   </section>
 </template>
 
 <script setup>
+import { useWhatsApp } from '~/composables/useWhatsApp'
+
 defineProps({
   stats: {
     type: Object,
@@ -48,6 +59,8 @@ defineProps({
     required: true
   }
 })
+
+const { openWhatsApp } = useWhatsApp()
 </script>
 
 <style scoped>
@@ -146,7 +159,7 @@ defineProps({
 
 .testimonials {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
 }
 
 .testimonial-heading {
@@ -198,6 +211,37 @@ defineProps({
   color: #94a3b8;
   font-size: 0.9rem;
   font-weight: 500;
+}
+
+.stats-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #818cf8;
+  transform: translateY(-2px);
+}
+
+.btn-cta span {
+  color: #e2e8f0;
 }
 
 @media (max-width: 768px) {

@@ -145,19 +145,6 @@
         ],
         "buttonText": "Get Started",
         "popular": false
-      },
-      {
-        "id": "payment-plan",
-        "title": "Payment Plan",
-        "price": "GHS 1,000",
-        "period": "/ month (3 months)",
-        "features": [
-          "Same benefits as Yearly",
-          "No interest",
-          "Start designing immediately"
-        ],
-        "buttonText": "Get Started",
-        "popular": false
       }
     ],
     "includedItems": [

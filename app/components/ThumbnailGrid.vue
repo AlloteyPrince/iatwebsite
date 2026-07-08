@@ -24,10 +24,21 @@
         </div>
       </div>
     </div>
+
+    <div class="grid-cta">
+      <button class="btn-cta" @click="openWhatsApp('Hi IAT, I saw your portfolio and I need a design like the ones you have. Can you help me?')">
+        <span>Want a design like these?</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </template>
 
 <script setup>
+import { useWhatsApp } from '~/composables/useWhatsApp'
+
 defineProps({
   designs: {
     type: Array,
@@ -36,6 +47,8 @@ defineProps({
 })
 
 defineEmits(['select-design'])
+
+const { openWhatsApp } = useWhatsApp()
 </script>
 
 <style scoped>
@@ -160,5 +173,36 @@ defineEmits(['select-design'])
   font-size: 0.85rem;
   color: #f1f5f9;
   font-weight: 500;
+}
+
+.grid-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #818cf8;
+  transform: translateY(-2px);
+}
+
+.btn-cta span {
+  color: #e2e8f0;
 }
 </style>
