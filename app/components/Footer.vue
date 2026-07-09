@@ -31,7 +31,7 @@
         <!-- Company Column -->
         <div class="footer-links-group">
           <h4 class="footer-heading">Company</h4>
-          <NuxtLink to="/portfolio" class="footer-link">Portfolio</NuxtLink>
+          <NuxtLink to="/designs" class="footer-link">Portfolio</NuxtLink>
           <a href="#pricing" class="footer-link">Pricing</a>
           <button class="footer-link-btn" @click="openWhatsApp('Hi IAT, can you tell me more about your agency?')">
             About
