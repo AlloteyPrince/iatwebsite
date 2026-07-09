@@ -5,6 +5,10 @@ export default defineNuxtConfig({
 
   srcDir: 'app/',
 
+  nitro: {
+  preset: 'static'
+},
+
   css: ['~/assets/css/main.css'],
 
   app: {
