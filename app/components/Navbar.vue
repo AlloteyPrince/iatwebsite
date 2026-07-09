@@ -2,17 +2,16 @@
   <header class="navbar" :class="{ 'scrolled': isScrolled }">
     <div class="navbar-inner">
       <!-- Logo -->
-      <NuxtLink to="/portfolio" class="logo">
+      <NuxtLink to="/" class="logo">
         <span class="logo-text">IAT</span>
         <span class="logo-sub">Innovation in Arts & Tech</span>
       </NuxtLink>
 
       <!-- Desktop Navigation -->
       <nav class="nav-desktop">
-        <NuxtLink to="/portfolio" class="nav-link" active-class="active">
-          Portfolio
-        </NuxtLink>
-        <a href="#pricing" class="nav-link">Pricing</a>
+        <NuxtLink to="/" class="nav-link" active-class="active" exact>Home</NuxtLink>
+        <NuxtLink to="/about" class="nav-link" active-class="active">About</NuxtLink>
+        <a href="/#pricing" class="nav-link">Pricing</a>
         <button class="nav-link nav-cta" @click="openWhatsApp('Hi IAT, I want to start a project with you.')">
           Start Project
         </button>
@@ -29,10 +28,9 @@
     <!-- Mobile Menu -->
     <Transition name="slide-down">
       <div v-if="mobileMenuOpen" class="mobile-menu">
-        <NuxtLink to="/portfolio" class="mobile-link" @click="mobileMenuOpen = false">
-          Portfolio
-        </NuxtLink>
-        <a href="#pricing" class="mobile-link" @click="mobileMenuOpen = false">Pricing</a>
+        <NuxtLink to="/" class="mobile-link" @click="mobileMenuOpen = false">Home</NuxtLink>
+        <NuxtLink to="/about" class="mobile-link" @click="mobileMenuOpen = false">About</NuxtLink>
+        <a href="/#pricing" class="mobile-link" @click="mobileMenuOpen = false">Pricing</a>
         <button class="mobile-link mobile-cta" @click="openWhatsApp('Hi IAT, I want to start a project with you.')">
           Start Project
         </button>

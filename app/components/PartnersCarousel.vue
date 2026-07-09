@@ -8,7 +8,12 @@
     </div>
 
     <div class="carousel-wrapper">
-      <div class="carousel-track" @mouseenter="pauseScroll" @mouseleave="resumeScroll">
+      <div 
+        class="carousel-track" 
+        ref="trackRef"
+        @mouseenter="pauseScroll" 
+        @mouseleave="resumeScroll"
+      >
         <div
           v-for="(partner, index) in duplicatedPartners"
           :key="index"
@@ -20,21 +25,11 @@
         </div>
       </div>
     </div>
-
-    <div class="partners-cta">
-      <button class="btn-cta" @click="openWhatsApp('Hi IAT, I saw the brands you work with and I want to join them. Can you help my business?')">
-        <span>🚀 Join these brands</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </button>
-    </div>
   </section>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import { useWhatsApp } from '~/composables/useWhatsApp'
 
 const props = defineProps({
   partners: {
@@ -43,31 +38,29 @@ const props = defineProps({
   }
 })
 
-const { openWhatsApp } = useWhatsApp()
-
 const duplicatedPartners = computed(() => [...props.partners, ...props.partners])
 
 // Scroll control
-const track = ref(null)
+const trackRef = ref(null)
 let scrollInterval = null
-let isPaused = false
+let isPaused = ref(false)
+let position = 0
+const speed = 0.5
 
 const startScroll = () => {
   if (scrollInterval) return
-  const trackEl = track.value
+  const trackEl = trackRef.value
   if (!trackEl) return
 
-  let position = 0
-  const speed = 0.5
-
   scrollInterval = setInterval(() => {
-    if (isPaused) return
+    if (isPaused.value) return
     position -= speed
     trackEl.style.transform = `translateX(${position}px)`
+    // Reset when halfway through (duplicated content)
     if (Math.abs(position) >= trackEl.scrollWidth / 2) {
       position = 0
     }
-  }, 16)
+  }, 16) // ~60fps
 }
 
 const stopScroll = () => {
@@ -78,11 +71,11 @@ const stopScroll = () => {
 }
 
 const pauseScroll = () => {
-  isPaused = true
+  isPaused.value = true
 }
 
 const resumeScroll = () => {
-  isPaused = false
+  isPaused.value = false
 }
 
 onMounted(() => {
@@ -97,6 +90,9 @@ onBeforeUnmount(() => {
 <style scoped>
 .partners-section {
   padding: 4rem 0 3rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .partners-header {
@@ -120,8 +116,6 @@ onBeforeUnmount(() => {
   overflow: hidden;
   position: relative;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 .carousel-track {
@@ -144,6 +138,13 @@ onBeforeUnmount(() => {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 0 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.partner-item:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .partner-placeholder {
@@ -151,6 +152,11 @@ onBeforeUnmount(() => {
   font-weight: 500;
   font-size: 0.9rem;
   letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+}
+
+.partner-item:hover .partner-placeholder {
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -167,36 +173,5 @@ onBeforeUnmount(() => {
   .carousel-track {
     gap: 1.5rem;
   }
-}
-
-.partners-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-}
-
-.btn-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  padding: 0.8rem 2rem;
-  border-radius: 50px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-cta:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: #818cf8;
-  transform: translateY(-2px);
-}
-
-.btn-cta span {
-  color: #e2e8f0;
 }
 </style>

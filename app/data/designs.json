@@ -110,12 +110,12 @@
       {
         "id": "single",
         "title": "Single Project",
-        "price": "From GHS 250",
+        "price": "From GHS 150",
         "period": null,
         "features": [
           "1 custom design",
           "2 rounds of revisions",
-          "3–5 business days delivery"
+          "1–2 business days delivery"
         ],
         "buttonText": "Get Started",
         "popular": false
@@ -123,7 +123,7 @@
       {
         "id": "monthly",
         "title": "Monthly Retainer",
-        "price": "GHS 500",
+        "price": "GHS 750",
         "period": "/ month",
         "features": [
           "7 designs per month",
@@ -136,7 +136,7 @@
       {
         "id": "yearly",
         "title": "Yearly Retainer",
-        "price": "GHS 3,000",
+        "price": "GHS 6,000",
         "period": "/ year",
         "features": [
           "7 designs per month",

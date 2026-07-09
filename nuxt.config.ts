@@ -11,8 +11,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Professional design services for small businesses in Ghana. Logos, flyers, social media graphics, and more.' },
-        { name: 'theme-color', content: '#0a0a0a' }
+        { name: 'description', content: 'Professional design services for small businesses in Ghana.' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

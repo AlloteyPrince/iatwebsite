@@ -18,6 +18,8 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.3.9",
+    "oxc-parser": "^0.139.0",
+    "rolldown": "^1.1.5",
     "typescript": "^5.4.5"
   }
 }

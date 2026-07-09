@@ -23,15 +23,29 @@
       </div>
     </div>
 
-    <div class="testimonials">
+    <!-- Redesigned Testimonials -->
+    <div class="testimonials-section">
       <h3 class="testimonial-heading">
-        <span>📊</span> Real Results from Businesses Like Yours
+        <span>💬</span> Real Results from Businesses Like Yours
       </h3>
 
-      <div v-for="(testimonial, index) in testimonials" :key="index" class="testimonial-card">
-        <div class="testimonial-quote-icon">"</div>
-        <p class="testimonial-quote">{{ testimonial.quote }}</p>
-        <p class="testimonial-author">— {{ testimonial.author }}, {{ testimonial.location }}</p>
+      <div class="testimonials-grid">
+        <div v-for="(testimonial, index) in testimonials" :key="index" class="testimonial-card">
+          <div class="testimonial-avatar">
+            <div class="avatar-placeholder">{{ testimonial.author.charAt(0) }}</div>
+          </div>
+          <div class="testimonial-body">
+            <div class="testimonial-stars">
+              <span v-for="i in 5" :key="i">★</span>
+            </div>
+            <p class="testimonial-quote">"{{ testimonial.quote }}"</p>
+            <div class="testimonial-author-info">
+              <span class="testimonial-author">{{ testimonial.author }}</span>
+              <span class="testimonial-location">{{ testimonial.location }}</span>
+            </div>
+          </div>
+          <div class="testimonial-quote-mark">"</div>
+        </div>
       </div>
     </div>
 
@@ -66,6 +80,9 @@ const { openWhatsApp } = useWhatsApp()
 <style scoped>
 .stats-section {
   padding: 3rem 0 4rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .stats-header {
@@ -157,60 +174,119 @@ const { openWhatsApp } = useWhatsApp()
   line-height: 1.5;
 }
 
-.testimonials {
-  max-width: 800px;
+/* Redesigned Testimonials */
+.testimonials-section {
+  max-width: 900px;
   margin: 0 auto 3rem;
 }
 
 .testimonial-heading {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 2rem;
-  color: #e2e8f0;
+  margin-bottom: 2.5rem;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 }
 
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.03);
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-left: 4px solid #818cf8;
-  padding: 1.8rem 2rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  padding: 2rem;
   transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 .testimonial-card:hover {
-  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 8px 40px rgba(99, 102, 241, 0.08);
 }
 
-.testimonial-quote-icon {
-  font-size: 2rem;
-  color: #818cf8;
-  opacity: 0.3;
-  line-height: 1;
-  margin-bottom: 0.25rem;
+.testimonial-quote-mark {
+  position: absolute;
+  top: 0.5rem;
+  right: 1.5rem;
+  font-size: 4rem;
+  color: rgba(99, 102, 241, 0.1);
   font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.testimonial-avatar {
+  flex-shrink: 0;
+}
+
+.avatar-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.testimonial-body {
+  flex: 1;
+}
+
+.testimonial-stars {
+  color: #fbbf24;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
 }
 
 .testimonial-quote {
-  color: #cbd5e1;
-  font-size: 1.05rem;
+  color: #e2e8f0;
+  font-size: 1rem;
   line-height: 1.7;
   font-style: italic;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
 }
 
 .testimonial-author {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.testimonial-location {
   color: #94a3b8;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.8rem;
 }
 
 .stats-cta {
@@ -242,23 +318,5 @@ const { openWhatsApp } = useWhatsApp()
 
 .btn-cta span {
   color: #e2e8f0;
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  .section-subtitle {
-    font-size: 0.95rem;
-  }
-
-  .stat-number {
-    font-size: 2.5rem;
-  }
-
-  .testimonial-card {
-    padding: 1.5rem;
-  }
 }
 </style>

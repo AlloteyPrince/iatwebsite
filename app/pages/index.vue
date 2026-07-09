@@ -1,111 +1,186 @@
 <template>
-  <div class="portfolio-page">
+  <div class="index-page">
     <!-- Section 1: Hero -->
     <PortfolioHero />
 
     <!-- Section 2: Stats -->
     <StatsSection :stats="data.stats" :testimonials="data.testimonials" />
 
-    <!-- Section 3: Show Designs Button -->
-    <div v-if="!showDesigns" class="show-designs-wrapper">
-      <button class="btn-primary" @click="showDesigns = true">
-        See Sample Designs
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </button>
+    <!-- Section 3: Show Designs Button with Gradient Background -->
+    <div class="show-designs-wrapper">
+      <div class="show-designs-glow"></div>
+      <div class="show-designs-content">
+        <div class="show-designs-text">
+          <span class="show-designs-badge">✦ Portfolio</span>
+          <h2 class="show-designs-title">See What We Can <span class="gradient-text">Create</span> For You</h2>
+          <p class="show-designs-subtitle">Browse through our collection of designs crafted for businesses like yours.</p>
+        </div>
+        <div class="show-designs-3d">
+          <div class="design-3d-placeholder">
+            <div class="design-3d-icon">🎨</div>
+            <div class="design-3d-ring"></div>
+          </div>
+        </div>
+        <NuxtLink to="/designs" class="btn-primary">
+          See All Designs
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </NuxtLink>
+      </div>
     </div>
 
-    <!-- Section 4: Sample Designs -->
-    <Transition name="fade" mode="out-in">
-      <div v-if="showDesigns" class="designs-section">
-        <ThumbnailGrid
-          :designs="data.designs"
-          @select-design="selectDesign"
-        />
-        <LargeDisplay
-          :design="selectedDesign"
-          :designs="data.designs"
-          @next="nextDesign"
-          @prev="prevDesign"
-          @select-design="selectDesign"
-        />
-      </div>
-    </Transition>
-
-    <!-- Section 5: Pricing -->
+    <!-- Section 4: Pricing -->
     <PricingSection :pricing="data.pricing" />
 
-    <!-- Section 6: Partners -->
+    <!-- Section 5: Partners -->
     <PartnersCarousel :partners="data.partners" />
 
-    <!-- Section 7: CTA -->
+    <!-- Section 6: CTA -->
     <CtaSection />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
 import data from '~/data/designs.json'
 
 import PortfolioHero from '~/components/PortfolioHero.vue'
 import StatsSection from '~/components/StatsSection.vue'
-import ThumbnailGrid from '~/components/ThumbnailGrid.vue'
-import LargeDisplay from '~/components/LargeDisplay.vue'
 import PricingSection from '~/components/PricingSection.vue'
 import PartnersCarousel from '~/components/PartnersCarousel.vue'
 import CtaSection from '~/components/CtaSection.vue'
 
-const showDesigns = ref(false)
-const selectedDesignIndex = ref(0)
-const selectedDesign = ref(data.designs[0])
-
-const selectDesign = (index) => {
-  selectedDesignIndex.value = index
-  selectedDesign.value = data.designs[index]
-}
-
-const nextDesign = () => {
-  const nextIndex = (selectedDesignIndex.value + 1) % data.designs.length
-  selectDesign(nextIndex)
-}
-
-const prevDesign = () => {
-  const prevIndex = (selectedDesignIndex.value - 1 + data.designs.length) % data.designs.length
-  selectDesign(prevIndex)
-}
-
-onMounted(() => {
-  selectedDesign.value = data.designs[0]
-})
-
 useHead({
-  title: 'IAT Portfolio - Design That Grows Your Business',
+  title: 'IAT - Innovation in Arts & Tech',
   meta: [
-    { name: 'description', content: 'Browse our portfolio of logos, flyers, and social media designs for businesses in Ghana.' }
+    { name: 'description', content: 'Professional design services for small businesses in Ghana. Logos, flyers, social media graphics, and more.' }
   ]
 })
 </script>
 
 <style scoped>
-.portfolio-page {
-  max-width: 1280px;
+.index-page {
+  max-width: 100%;
   margin: 0 auto;
-  padding: 6rem 1.5rem 4rem;
   background: #0a0a0a;
   color: #ffffff;
 }
 
-@media (max-width: 768px) {
-  .portfolio-page {
-    padding: 5rem 1rem 3rem;
-  }
+/* Show Designs Section */
+.show-designs-wrapper {
+  position: relative;
+  padding: 5rem 0;
+  margin: 3rem 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(10, 10, 10, 0.5);
 }
 
-.show-designs-wrapper {
+.show-designs-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.12), transparent 60%),
+              radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.08), transparent 50%);
+  pointer-events: none;
+}
+
+.show-designs-content {
+  position: relative;
+  z-index: 1;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.show-designs-text {
+  margin-bottom: 2rem;
+}
+
+.show-designs-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #818cf8;
+  font-weight: 600;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.show-designs-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.show-designs-title .gradient-text {
+  background: linear-gradient(135deg, #818cf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.show-designs-subtitle {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.show-designs-3d {
+  margin: 1.5rem 0 2rem;
+}
+
+.design-3d-placeholder {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 3rem 0 4rem;
+}
+
+.design-3d-icon {
+  font-size: 3rem;
+  z-index: 2;
+  animation: float3D 3s ease-in-out infinite;
+}
+
+.design-3d-ring {
+  position: absolute;
+  inset: -10px;
+  border: 2px solid rgba(99, 102, 241, 0.15);
+  border-radius: 50%;
+  animation: spinRing 8s linear infinite;
+}
+
+.design-3d-ring::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 50%;
+}
+
+@keyframes float3D {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+@keyframes spinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .btn-primary {
@@ -121,6 +196,7 @@ useHead({
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
   letter-spacing: 0.3px;
   box-shadow: 0 4px 25px rgba(99, 102, 241, 0.3);
 }
@@ -142,18 +218,27 @@ useHead({
   transform: translateX(4px);
 }
 
-.designs-section {
-  margin-top: 2rem;
-}
+@media (max-width: 768px) {
+  .show-designs-title {
+    font-size: 1.8rem;
+  }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
+  .show-designs-subtitle {
+    font-size: 0.95rem;
+  }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
+  .design-3d-placeholder {
+    width: 60px;
+    height: 60px;
+  }
+
+  .design-3d-icon {
+    font-size: 2rem;
+  }
+
+  .btn-primary {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
 }
 </style>

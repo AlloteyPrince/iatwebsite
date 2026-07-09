@@ -28,6 +28,7 @@
           </div>
         </div>
 
+        <!-- Plan Features -->
         <ul class="plan-features">
           <li v-for="feature in plan.features" :key="feature" class="feature-item">
             <span class="feature-icon">✓</span>
@@ -35,19 +36,20 @@
           </li>
         </ul>
 
+        <!-- Divider -->
+        <div class="feature-divider"></div>
+
+        <!-- Included Features - All checkmarks -->
+        <ul class="included-features">
+          <li v-for="item in pricing.includedItems" :key="item" class="included-item">
+            <span class="included-icon">✓</span>
+            {{ item }}
+          </li>
+        </ul>
+
         <button class="plan-btn" @click="handlePlanClick(plan)">
           {{ plan.buttonText }}
         </button>
-      </div>
-    </div>
-
-    <div class="included-section">
-      <h4 class="included-title">What's Included in Every Plan</h4>
-      <div class="included-grid">
-        <div v-for="item in pricing.includedItems" :key="item" class="included-item">
-          <span class="included-icon">✅</span>
-          {{ item }}
-        </div>
       </div>
     </div>
 
@@ -86,7 +88,10 @@ const handlePlanClick = (plan) => {
 
 <style scoped>
 .pricing-section {
-  padding: 4rem 0;
+  padding: 5rem 0 3rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .pricing-header {
@@ -132,7 +137,7 @@ const handlePlanClick = (plan) => {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  max-width: 1000px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -160,6 +165,8 @@ const handlePlanClick = (plan) => {
   text-align: center;
   transition: all 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .pricing-card:hover {
@@ -196,7 +203,7 @@ const handlePlanClick = (plan) => {
 }
 
 .plan-price {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .price-amount {
@@ -212,10 +219,11 @@ const handlePlanClick = (plan) => {
   margin-top: 0.1rem;
 }
 
+/* Plan Features */
 .plan-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.75rem;
   text-align: left;
 }
 
@@ -232,6 +240,40 @@ const handlePlanClick = (plan) => {
   color: #818cf8;
   font-weight: 700;
   font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Divider */
+.feature-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 0.5rem 0 0.75rem;
+}
+
+/* Included Features - All checkmarks */
+.included-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  text-align: left;
+  flex: 1;
+}
+
+.included-item {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  padding: 0.3rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.included-icon {
+  color: #818cf8;
+  font-weight: 700;
+  font-size: 0.7rem;
+  flex-shrink: 0;
 }
 
 .plan-btn {
@@ -245,6 +287,7 @@ const handlePlanClick = (plan) => {
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
+  margin-top: auto;
 }
 
 .plan-btn:hover {
@@ -258,38 +301,6 @@ const handlePlanClick = (plan) => {
 
 .pricing-card:not(.popular) .plan-btn:hover {
   background: rgba(255, 255, 255, 0.1);
-}
-
-.included-section {
-  max-width: 900px;
-  margin: 3.5rem auto 0;
-  text-align: center;
-}
-
-.included-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #e2e8f0;
-  margin-bottom: 1.5rem;
-}
-
-.included-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.75rem;
-}
-
-.included-item {
-  color: #cbd5e1;
-  font-size: 0.9rem;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.included-icon {
-  margin-right: 0.5rem;
 }
 
 .pricing-cta {
@@ -324,16 +335,20 @@ const handlePlanClick = (plan) => {
 }
 
 @media (max-width: 768px) {
+  .pricing-section {
+    padding: 3rem 0 2rem;
+  }
+
   .section-title {
     font-size: 1.8rem;
   }
 
-  .included-grid {
-    grid-template-columns: 1fr;
-  }
-
   .pricing-card {
     padding: 1.5rem 1rem;
+  }
+
+  .included-item {
+    font-size: 0.8rem;
   }
 }
 </style>

@@ -35,6 +35,9 @@ const { openWhatsApp } = useWhatsApp()
 <style scoped>
 .cta-section {
   padding: 4rem 1rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .cta-container {
