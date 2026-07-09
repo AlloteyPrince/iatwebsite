@@ -2,9 +2,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  
-  css: ['~/assets/css/main.css'],
-  
+
+  css: ['~/app/assets/css/main.css'],
+
   app: {
     head: {
       title: 'IAT - Innovation in Arts & Tech',
@@ -21,12 +21,12 @@ export default defineNuxtConfig({
       ]
     }
   },
-  
+
   modules: [
     '@nuxt/image',
     '@nuxtjs/tailwindcss'
   ],
-  
+
   tailwindcss: {
     config: {
       theme: {
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
       }
     }
   },
-  
+
   build: {
     transpile: ['@nuxt/image']
   }
