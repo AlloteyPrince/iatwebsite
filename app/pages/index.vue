@@ -69,8 +69,8 @@ useHead({
 /* Show Designs Section */
 .show-designs-wrapper {
   position: relative;
-  padding: 5rem 0;
-  margin: 3rem 0;
+  padding: 7rem 0;
+  margin: 6rem 0;
   border-radius: 24px;
   overflow: hidden;
   background: rgba(10, 10, 10, 0.5);
@@ -219,6 +219,11 @@ useHead({
 }
 
 @media (max-width: 768px) {
+  .show-designs-wrapper {
+    padding: 4rem 0;
+    margin: 4rem 0;
+  }
+
   .show-designs-title {
     font-size: 1.8rem;
   }

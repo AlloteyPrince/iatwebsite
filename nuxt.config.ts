@@ -1,17 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { fileURLToPath } from 'node:url'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
 
   srcDir: 'app/',
 
+  // srcDir is 'app/', but public/ lives at the project root — tell Nitro
+  // explicitly where to find it, otherwise it looks for app/public.
   nitro: {
-    preset: 'static'
+    publicAssets: [
+      { dir: fileURLToPath(new URL('./public', import.meta.url)), baseURL: '/' }
+    ]
   },
 
-  css: ['~/assets/css/main.css'],
-
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: 'IAT - Innovation in Arts & Tech',
       meta: [
@@ -27,6 +32,8 @@ export default defineNuxtConfig({
       ]
     }
   },
+
+  css: ['~/assets/css/main.css'],
 
   modules: [
     '@nuxt/image',

@@ -9,7 +9,7 @@
 
       <!-- Desktop Navigation -->
       <nav class="nav-desktop">
-        <NuxtLink to="/" class="nav-link" active-class="active" exact>Home</NuxtLink>
+        <!-- <NuxtLink to="/" class="nav-link" active-class="active" exact>Home</NuxtLink> -->
         <NuxtLink to="/about" class="nav-link" active-class="active">About</NuxtLink>
         <a href="/#pricing" class="nav-link">Pricing</a>
         <button class="nav-link nav-cta" @click="openWhatsApp('Hi IAT, I want to start a project with you.')">

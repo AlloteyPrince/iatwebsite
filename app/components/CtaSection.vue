@@ -34,7 +34,7 @@ const { openWhatsApp } = useWhatsApp()
 
 <style scoped>
 .cta-section {
-  padding: 4rem 1rem 2rem;
+  padding: 6rem 1rem 7rem;
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
@@ -156,6 +156,10 @@ const { openWhatsApp } = useWhatsApp()
 }
 
 @media (max-width: 768px) {
+  .cta-section {
+    padding: 4rem 1rem 5rem;
+  }
+
   .cta-container {
     padding: 2.5rem 1.5rem;
     border-radius: 16px;

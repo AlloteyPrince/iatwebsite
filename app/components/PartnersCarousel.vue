@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .partners-section {
-  padding: 4rem 0 3rem;
+  padding: 6rem 0;
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
@@ -160,6 +160,10 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 768px) {
+  .partners-section {
+    padding: 4rem 0;
+  }
+
   .partner-item {
     min-width: 100px;
     height: 50px;

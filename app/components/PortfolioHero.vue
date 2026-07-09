@@ -6,10 +6,6 @@
     </div>
 
     <div class="hero-content">
-      <div class="hero-badge">
-        <span>✦</span>
-        Professional Design Agency
-      </div>
       <h1 class="hero-title">
         Design That <span class="gradient-text">Grows</span>
         <br />Your Business
@@ -21,11 +17,11 @@
       </p>
       <div class="hero-actions">
         <button class="btn-primary" @click="openWhatsApp('Hi IAT, I want to start a design project for my business. Can you help me?')">
-          Start Your Project
+          Work With Us
         </button>
-        <button class="btn-secondary" @click="openWhatsApp('Hi IAT, I want to learn more about your design services.')">
+        <NuxtLink to="/about" class="btn-secondary">
           Learn More
-        </button>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -41,8 +37,13 @@ const { openWhatsApp } = useWhatsApp()
 .hero {
   position: relative;
   text-align: center;
-  padding: 4rem 1rem 5rem;
+  padding: 7rem 1rem 8rem;
   overflow: hidden;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .hero-background {
@@ -50,6 +51,9 @@ const { openWhatsApp } = useWhatsApp()
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  background-image: linear-gradient(rgba(5, 5, 15, 0.8), rgba(5, 5, 15, 0.8)), url('/images/hero-image.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-glow {
@@ -94,23 +98,6 @@ const { openWhatsApp } = useWhatsApp()
   z-index: 1;
   max-width: 900px;
   margin: 0 auto;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.4rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  color: #94a3b8;
-  margin-bottom: 2rem;
-}
-
-.hero-badge span {
-  color: #818cf8;
 }
 
 .hero-title {
@@ -184,7 +171,7 @@ const { openWhatsApp } = useWhatsApp()
 
 @media (max-width: 768px) {
   .hero {
-    padding: 2rem 1rem 3rem;
+    padding: 4rem 1rem 5rem;
   }
 
   .hero-title {

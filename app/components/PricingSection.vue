@@ -88,7 +88,7 @@ const handlePlanClick = (plan) => {
 
 <style scoped>
 .pricing-section {
-  padding: 5rem 0 3rem;
+  padding: 7rem 0 6rem;
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
@@ -336,7 +336,7 @@ const handlePlanClick = (plan) => {
 
 @media (max-width: 768px) {
   .pricing-section {
-    padding: 3rem 0 2rem;
+    padding: 4rem 0 3rem;
   }
 
   .section-title {
