@@ -3,7 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
-  css: ['~/app/assets/css/main.css'],
+  srcDir: 'app/',
+
+  css: ['~/assets/css/main.css'],
 
   app: {
     head: {
