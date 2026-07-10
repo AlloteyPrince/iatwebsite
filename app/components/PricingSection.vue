@@ -1,6 +1,6 @@
 <template>
   <section id="pricing" class="pricing-section">
-    <div class="pricing-header">
+    <div class="pricing-header" v-reveal>
       <span class="pricing-label">Pricing</span>
       <h2 class="section-title">
         Choose the <span class="gradient-text">Right Plan</span>
@@ -13,10 +13,11 @@
 
     <div class="pricing-grid">
       <div
-        v-for="plan in pricing.plans"
+        v-for="(plan, idx) in pricing.plans"
         :key="plan.id"
         class="pricing-card"
         :class="{ popular: plan.popular }"
+        v-reveal="{ delay: idx * 100 }"
       >
         <div v-if="plan.popular" class="popular-badge">Most Popular</div>
 

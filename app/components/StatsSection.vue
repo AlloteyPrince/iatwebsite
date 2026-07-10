@@ -1,6 +1,6 @@
 <template>
   <section class="stats-section">
-    <div class="stats-header">
+    <div class="stats-header" v-reveal>
       <span class="stats-label">Why Design Matters</span>
       <h2 class="section-title">
         Design is an <span class="gradient-text">Investment</span>,
@@ -13,7 +13,7 @@
     </div>
 
     <div class="stats-grid">
-      <div class="stat-card" v-for="(stat, key) in stats" :key="key">
+      <div class="stat-card" v-for="(stat, key, idx) in stats" :key="key" v-reveal="{ delay: idx * 100 }">
         <div class="stat-number">{{ stat }}</div>
         <div class="stat-label">
           <span v-if="key === 'revenueGrowth'">of small businesses that invest in design see revenue growth within 1 year</span>
@@ -27,7 +27,7 @@
 
     <!-- Redesigned Testimonials -->
     <div class="testimonials-section">
-      <h3 class="testimonial-heading">
+      <h3 class="testimonial-heading" v-reveal>
         <span>💬</span> Real Results from Businesses Like Yours
       </h3>
 

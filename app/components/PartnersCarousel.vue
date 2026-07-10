@@ -1,6 +1,6 @@
 <template>
   <section class="partners-section">
-    <div class="partners-header">
+    <div class="partners-header" v-reveal>
       <h3 class="partners-title">🤝 Trusted by These Brands</h3>
       <p class="partners-subtitle">
         We work with businesses across Ghana to bring their vision to life.

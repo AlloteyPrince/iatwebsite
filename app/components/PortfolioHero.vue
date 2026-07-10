@@ -5,7 +5,7 @@
       <div class="hero-glow glow-2"></div>
     </div>
 
-    <div class="hero-content">
+    <div class="hero-content" v-reveal>
       <h1 class="hero-title">
         Design That <span class="gradient-text">Grows</span>
         <br />Your Business

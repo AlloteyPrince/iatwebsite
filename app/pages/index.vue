@@ -9,7 +9,7 @@
     <!-- Section 3: Show Designs Button with Gradient Background -->
     <div class="show-designs-wrapper">
       <div class="show-designs-glow"></div>
-      <div class="show-designs-content">
+      <div class="show-designs-content" v-reveal>
         <div class="show-designs-text">
           <span class="show-designs-badge">✦ Portfolio</span>
           <h2 class="show-designs-title">See What We Can <span class="gradient-text">Create</span> For You</h2>

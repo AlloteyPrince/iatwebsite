@@ -1,6 +1,6 @@
 <template>
   <section id="contact" class="cta-section">
-    <div class="cta-container">
+    <div class="cta-container" v-reveal>
       <div class="cta-glow"></div>
       <div class="cta-content">
         <span class="cta-badge">Get Started</span>
