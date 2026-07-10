@@ -17,7 +17,7 @@
         </div>
         <div class="show-designs-3d">
           <div class="design-3d-placeholder">
-            <div class="design-3d-icon">🎨</div>
+            <img src="/images/portfolio.png" alt="Portfolio designs" class="design-3d-icon" />
             <div class="design-3d-ring"></div>
           </div>
         </div>
@@ -69,8 +69,8 @@ useHead({
 /* Show Designs Section */
 .show-designs-wrapper {
   position: relative;
-  padding: 7rem 0;
-  margin: 6rem 0;
+  padding: 2.5rem 0;
+  margin: 4rem 0;
   border-radius: 24px;
   overflow: hidden;
   background: rgba(10, 10, 10, 0.5);
@@ -96,7 +96,7 @@ useHead({
 }
 
 .show-designs-text {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .show-designs-badge {
@@ -134,13 +134,15 @@ useHead({
 }
 
 .show-designs-3d {
-  margin: 1.5rem 0 2rem;
+  margin: -1rem 0;
 }
 
 .design-3d-placeholder {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 480px;
+  height: 480px;
+  max-width: 70vw;
+  max-height: 70vw;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -148,14 +150,17 @@ useHead({
 }
 
 .design-3d-icon {
-  font-size: 3rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   z-index: 2;
+  transform: rotate(-20deg);
   animation: float3D 3s ease-in-out infinite;
 }
 
 .design-3d-ring {
   position: absolute;
-  inset: -10px;
+  inset: 8%;
   border: 2px solid rgba(99, 102, 241, 0.15);
   border-radius: 50%;
   animation: spinRing 8s linear infinite;
@@ -174,8 +179,8 @@ useHead({
 }
 
 @keyframes float3D {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(5deg); }
+  0%, 100% { transform: translateY(0) rotate(-20deg); }
+  50% { transform: translateY(-8px) rotate(-15deg); }
 }
 
 @keyframes spinRing {
@@ -199,6 +204,7 @@ useHead({
   text-decoration: none;
   letter-spacing: 0.3px;
   box-shadow: 0 4px 25px rgba(99, 102, 241, 0.3);
+  margin-top: 0;
 }
 
 .btn-primary:hover {
@@ -220,8 +226,8 @@ useHead({
 
 @media (max-width: 768px) {
   .show-designs-wrapper {
-    padding: 4rem 0;
-    margin: 4rem 0;
+    padding: 2rem 0;
+    margin: 3rem 0;
   }
 
   .show-designs-title {
@@ -233,17 +239,10 @@ useHead({
   }
 
   .design-3d-placeholder {
-    width: 60px;
-    height: 60px;
-  }
-
-  .design-3d-icon {
-    font-size: 2rem;
-  }
-
-  .btn-primary {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
+    width: 280px;
+    height: 280px;
+    max-width: 75vw;
+    max-height: 75vw;
   }
 }
 </style>

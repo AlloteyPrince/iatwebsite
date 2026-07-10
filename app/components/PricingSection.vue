@@ -157,28 +157,81 @@ const handlePlanClick = (plan) => {
 }
 
 .pricing-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  background:
+    linear-gradient(160deg, rgba(99, 102, 241, 0.08), rgba(255, 255, 255, 0.02) 40%, rgba(139, 92, 246, 0.05)),
+    rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 2rem 1.5rem;
   text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
+  transition: all 0.35s ease;
   display: flex;
   flex-direction: column;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Top highlight sheen */
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  border-radius: 16px 16px 0 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+/* Soft glow that appears on hover */
+.pricing-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(160deg, rgba(129, 140, 248, 0.4), transparent 50%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
 .pricing-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-6px);
+  background:
+    linear-gradient(160deg, rgba(99, 102, 241, 0.14), rgba(255, 255, 255, 0.03) 40%, rgba(139, 92, 246, 0.1)),
+    rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 12px 40px rgba(99, 102, 241, 0.15);
+}
+
+.pricing-card:hover::after {
+  opacity: 1;
 }
 
 .pricing-card.popular {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 4px 30px rgba(99, 102, 241, 0.08);
+  background:
+    linear-gradient(160deg, rgba(99, 102, 241, 0.16), rgba(255, 255, 255, 0.02) 45%, rgba(139, 92, 246, 0.1)),
+    rgba(255, 255, 255, 0.04);
+  border-color: rgba(129, 140, 248, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 40px rgba(99, 102, 241, 0.18);
+}
+
+.pricing-card.popular:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 16px 50px rgba(99, 102, 241, 0.28);
 }
 
 .popular-badge {
@@ -194,6 +247,8 @@ const handlePlanClick = (plan) => {
   border-radius: 50px;
   letter-spacing: 0.3px;
   white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+  z-index: 2;
 }
 
 .plan-title {
